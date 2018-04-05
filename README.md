@@ -39,4 +39,13 @@ Example command is `-inputFolder D:\MovieDatabase\data\ml-20m -outputFolder D:Mo
 
 ### Generating the figures [[code](https://github.com/vis2018/treemap-resources/tree/master/Figures/Code)]
 
-TODO
+To generate the figures it is first necessary to pre-compute the quality metrics. 
+Using the command `python3 Main.py cache-metrics <dataset_id>`, where *dataset_id* is the name of the folder that the real layouts are stored, e.g. 'exo' or 'Hystrix', we compute the Aspect Ratio, Corner Travel (real and baseline), and Relative Position Change (real and baseline) metrics cell-wise for all revisions and techniques.
+
+Following the order of the paper, to generate a real *vs.* baseline KDE scatter plot for Corner Travel and Relative Position Change for a given dataset, run `python3 Main.py kde-ct <dataset_id>` and `python3 Main.py kde-rpc <dataset_id>`.  The results should be [1](https://github.com/vis2018/treemap-resources/tree/master/Figures/1%20-%20KDE%20plots%20-%20CT%20and%20RPC%20-%20real%20vs%20baseline%20movement/1.A%20-%20Real%20(x-axis)%20vs%20Baseline%20(y-axis)%20Corner%20Travel%20-%20Linear%20and%20log%20colormaps) and [2](https://github.com/vis2018/treemap-resources/tree/master/Figures/1%20-%20KDE%20plots%20-%20CT%20and%20RPC%20-%20real%20vs%20baseline%20movement/1.B%20-%20Real%20(x-axis)%20vs%20Baseline%20(y-axis)%20Relative%20Position%20Change%20-%20Linear%20and%20log%20colormaps), respectively.
+
+To generate the time boxplots as seen in Figure 7, run `python3 Main.py boxplots <dataset_id>`. Results for the 4 measurements (unweighted aspect ratio, weighted aspect ratio, diff corner travel, and diff relative position change) will be generated, just as in [3](https://github.com/vis2018/treemap-resources/tree/master/Figures/2%20-%20RPC%2C%20CT%20and%20(weighted%20%2B%20unweighted)%20AR%20boxplots).
+
+To generate Figures 8 (Matrix) and 9 (Star-glyph scatterplot), run `python3 Main.py matrix <dataset_id list>` and `python3 Main.py matrix <dataset_id list>`, where *dataset_ids* are separated by a single white space, e.g., `python3 Main.py matrix exo Hystrix hiv m-names` .
+
+
